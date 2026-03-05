@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AI Interview Coach</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <h2 style="font-size: 1.2rem; margin-bottom: 2rem;">AI Coach</h2>
+            <nav style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="history.html" class="nav-link">History</a>
+                <a href="login.html" class="nav-link">Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Setup Section -->
+            <section id="setup-section" class="setup-section">
+                <h2>Interview Setup</h2>
+                <p class="subtitle">Choose your session duration and prepare for the spotlight.</p>
+                <div class="duration-cards">
+                    <div class="duration-card" onclick="selectDuration(5, 3)">
+                        <h3>5 Minutes</h3>
+                        <p>2–3 Questions</p>
+                    </div>
+                    <div class="duration-card selected" onclick="selectDuration(10, 5)">
+                        <h3>10 Minutes</h3>
+                        <p>4–6 Questions</p>
+                    </div>
+                    <div class="duration-card" onclick="selectDuration(15, 8)">
+                        <h3>15 Minutes</h3>
+                        <p>7–10 Questions</p>
+                    </div>
+                </div>
+                <button class="btn-start" onclick="startInterview()">Start Interview Session</button>
+            </section>
+
+            <!-- Analytics Dashboard (Hidden by default, shown after "start" mock) -->
+            <section id="analytics-section" style="display: none;">
+                <header
+                    style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h2>Performance Analytics</h2>
+                        <p class="subtitle">Deep dive into your last session's metrics.</p>
+                    </div>
+                    <button class="btn-start" style="padding: 10px 20px; font-size: 0.9rem;"
+                        onclick="resetToSetup()">New Session</button>
+                </header>
+
+                <div class="stats-grid">
+                    <div class="stat-card"
+                        style="grid-column: span 2; background: linear-gradient(135deg, var(--accent), var(--accent-glow));">
+                        <div class="stat-label" style="color: rgba(255,255,255,0.8);">Overall Confidence Score</div>
+                        <div class="stat-value" id="overall-confidence">0%</div>
+                        <div class="probability-bar">
+                            <div class="probability-fill" id="confidence-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Engagement</div>
+                        <div class="stat-value" id="engagement-score">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Pace (WPM)</div>
+                        <div class="stat-value" id="wpm-score">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Fillers</div>
+                        <div class="stat-value" id="fillers-count">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Stability</div>
+                        <div class="stat-value" id="stability-score">0%</div>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>Performance Breakdown</h3>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Voice Analysis</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="chart-container" style="grid-column: span 2;">
+                        <h3>Engagement Trend</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="feedback-panel">
+                    <h3>AI Interview Feedback</h3>
+                    <ul id="feedback-list"
+                        style="margin-top: 15px; list-style: none; display: flex; flex-direction: column; gap: 10px; color: var(--text-secondary);">
+                        <!-- Feedback items will be injected here -->
+                    </ul>
+                </div>
+
+                <div class="card" style="margin-top: 40px; max-width: 100%; text-align: left;">
+                    <h3>Placement Likelihood</h3>
+                    <div id="placement-text" style="font-size: 1.2rem; margin: 10px 0; font-weight: 600;">Moderate
+                        probability</div>
+                    <div class="probability-bar" style="height: 12px;">
+                        <div class="probability-fill" id="placement-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

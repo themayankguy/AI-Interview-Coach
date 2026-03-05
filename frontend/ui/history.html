@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History | AI Interview Coach</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <h2 style="font-size: 1.2rem; margin-bottom: 2rem;">AI Coach</h2>
+            <nav style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="history.html" class="nav-link active">History</a>
+                <a href="login.html" class="nav-link">Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header style="margin-bottom: 40px;">
+                <h2>Interview History</h2>
+                <p class="subtitle">Review your past performance and track your growth.</p>
+            </header>
+
+            <div id="history-list" class="history-grid">
+                <!-- History cards will be injected here -->
+            </div>
+
+            <div id="no-history"
+                style="display: none; text-align: center; margin-top: 100px; color: var(--text-secondary);">
+                <p>No interview history found. Start your first session to see results here!</p>
+            </div>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

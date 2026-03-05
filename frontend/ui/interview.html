@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Session | AI Interview Coach</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .interview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .webcam-box {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 24px;
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 30px rgba(94, 92, 230, 0.3);
+        }
+
+        #webcam-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sync-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--accent);
+        }
+
+        .pulse {
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(52, 199, 89, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 199, 89, 0);
+            }
+        }
+
+        .question-box {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .timer-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-glow);
+            margin-bottom: 10px;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="interview-container">
+        <div class="webcam-box">
+            <video id="webcam-video" autoplay playsinline muted></video>
+            <div class="sync-overlay">
+                <div class="pulse"></div>
+                <span id="sync-status">Syncing with AI Engine...</span>
+            </div>
+        </div>
+
+        <div class="question-box" id="question-box">
+            <div class="timer-display" id="session-timer">00:00</div>
+            <h2 id="current-question">Preparing your first question...</h2>
+
+            <div class="instructions">
+                <strong>Action Required:</strong> Please ensure your Python backend is running: <br>
+                <code>python frontend/interview_session.py</code>
+            </div>
+
+            <button class="btn-start"
+                style="margin-top: 30px; background: var(--danger); box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);"
+                onclick="endSession()">End Session Early</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Start webcam on load
+        async function initCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                document.getElementById('webcam-video').srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing webcam:", err);
+                alert("Please enable camera access to proceed.");
+            }
+        }
+
+        // Simple timer
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('session-timer').innerText =
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+
+        // Start polling for results
+        window.onload = () => {
+            initCamera();
+            startPollingForResults();
+        };
+
+        function endSession() {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+
+</html>
