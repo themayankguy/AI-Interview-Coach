@@ -26,19 +26,21 @@
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            min-height: 100vh;
-            padding: 40px;
+            height: 100vh;
+            overflow: hidden;
+            padding: 0 40px 20px;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
+            padding: 18px 0;
+            flex-shrink: 0;
         }
 
         .header-text {
@@ -98,10 +100,10 @@
         /* Main app area (hidden until start) */
         #app-container {
             display: grid;
-            grid-template-columns: 1fr 450px;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: 1fr 45%;
+            gap: 30px;
+            flex: 1;
+            min-height: 0;
             opacity: 0.3;
             pointer-events: none;
             transition: opacity 0.5s ease;
@@ -115,9 +117,12 @@
         .card {
             background-color: var(--card-bg);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            padding: 28px 32px;
             border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
         }
 
         .question-area {
@@ -203,7 +208,8 @@
         .camera-panel {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            height: 100%;
         }
 
         .camera-label {
@@ -225,6 +231,7 @@
 
         .video-container {
             width: 100%;
+            flex: 1;
             border-radius: 20px;
             overflow: hidden;
             border: 2px solid var(--border);
@@ -236,9 +243,9 @@
 
         video {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             transform: scaleX(-1);
-            /* Mirror for natural feel */
         }
 
         .completed-msg {

@@ -355,17 +355,23 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     elapsed = int(time.time() - local_question_start_time)
 
+                safe_stability = voice_metrics["volume_stability"]
+                safe_stability = 0 if (safe_stability != safe_stability) else safe_stability  # NaN check
+
+                safe_wpm = voice_metrics["wpm"]
+                safe_wpm = 0 if (safe_wpm != safe_wpm) else safe_wpm  # NaN check
+
                 await websocket.send_json({
 
                     "question": "Interview Completed" if is_completed else local_selected_questions[local_current_question_index],
 
                     "time": elapsed,
 
-                    "wpm": voice_metrics["wpm"],
+                    "wpm": round(safe_wpm, 1),
 
                     "fillers": voice_metrics["filler_count"],
 
-                    "stability": int(voice_metrics["volume_stability"] * 100),
+                    "stability": int(safe_stability * 100),
 
                     "emotion": emotion,
 

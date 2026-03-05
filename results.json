@@ -1373,5 +1373,209 @@
                 "stability": 91
             }
         ]
+    },
+    {
+        "timestamp": "2026-03-05 23:01:26",
+        "total_duration": 34,
+        "overall_avg_wpm": 70,
+        "overall_avg_engagement": 37,
+        "overall_avg_stability": 48,
+        "total_fillers": 3,
+        "filler_freq": {
+            "so": 1,
+            "actually": 2
+        },
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 32,
+                "avg_wpm": 112,
+                "avg_engagement": 22,
+                "fillers": 3,
+                "stability": 48
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 21,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "Tell me about a time you worked in a team.",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 54,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "How did you optimize your model performance?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 58,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "Difference between classification and regression?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 59,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "Why do you want to join our company?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What is overfitting and how can you prevent it?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 52,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 67,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 83,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "How do you resolve conflicts in a project?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 23:03:15",
+        "total_duration": 46,
+        "overall_avg_wpm": 80,
+        "overall_avg_engagement": 60,
+        "overall_avg_stability": 55,
+        "total_fillers": 6,
+        "filler_freq": {
+            "so": 5,
+            "actually": 1
+        },
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 16,
+                "avg_wpm": 35,
+                "avg_engagement": 53,
+                "fillers": 2,
+                "stability": 61
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 10,
+                "avg_wpm": 80,
+                "avg_engagement": 63,
+                "fillers": 2,
+                "stability": 56
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 8,
+                "avg_wpm": 85,
+                "avg_engagement": 47,
+                "fillers": 1,
+                "stability": 57
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 2,
+                "avg_wpm": 89,
+                "avg_engagement": 52,
+                "fillers": 1,
+                "stability": 56
+            },
+            {
+                "question": "What are vanishing and exploding gradients?",
+                "duration": 0,
+                "avg_wpm": 89,
+                "avg_engagement": 88,
+                "fillers": 0,
+                "stability": 56
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 1,
+                "avg_wpm": 89,
+                "avg_engagement": 98,
+                "fillers": 0,
+                "stability": 56
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 5,
+                "avg_wpm": 86,
+                "avg_engagement": 61,
+                "fillers": 0,
+                "stability": 54
+            },
+            {
+                "question": "Explain supervised vs unsupervised learning.",
+                "duration": 0,
+                "avg_wpm": 84,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 54
+            },
+            {
+                "question": "Explain your final year project.",
+                "duration": 0,
+                "avg_wpm": 84,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 54
+            },
+            {
+                "question": "What is indexing in databases?",
+                "duration": 0,
+                "avg_wpm": 83,
+                "avg_engagement": 51,
+                "fillers": 0,
+                "stability": 54
+            },
+            {
+                "question": "Which tools and frameworks have you used in AI projects?",
+                "duration": 0,
+                "avg_wpm": 83,
+                "avg_engagement": 51,
+                "fillers": 0,
+                "stability": 54
+            }
+        ]
     }
 ]
