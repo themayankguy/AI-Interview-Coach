@@ -1,0 +1,66 @@
+first_question = "Tell me about yourself."
+
+other_questions = [
+    # HR / Behavioral
+    "Why should we hire you?",
+    "What are your strengths and weaknesses?",
+    "Describe a challenge you handled.",
+    "Where do you see yourself in 5 years?",
+    "Tell me about a failure you experienced.",
+    "How do you handle pressure?",
+    "Tell me about a time you worked in a team.",
+    "How do you resolve conflicts in a project?",
+    "What motivates you to work in AI & Data Science?",
+    "Why do you want to join our company?",
+
+    # Core AI & Data Science (BTech AIDS)
+    "What is the difference between AI, ML, and Deep Learning?",
+    "Explain supervised vs unsupervised learning.",
+    "What is overfitting and how can you prevent it?",
+    "Explain bias-variance tradeoff.",
+    "What are precision, recall, and F1-score?",
+    "What is cross-validation?",
+    "Difference between classification and regression?",
+    "Explain Gradient Descent and its types.",
+    "What are activation functions? Name a few.",
+    "What is backpropagation?",
+
+    # Deep Learning
+    "What is CNN and where is it used?",
+    "What is the role of convolutional layers?",
+    "Explain RNN and LSTM.",
+    "What is transfer learning?",
+    "What are vanishing and exploding gradients?",
+    "Difference between Batch Normalization and Dropout?",
+    "What is an epoch, batch size, and iteration?",
+
+    # Data Structures & Programming
+    "Explain time complexity and space complexity.",
+    "What is the difference between list and tuple in Python?",
+    "What are decorators in Python?",
+    "Explain OOP concepts in Python.",
+    "What is multithreading vs multiprocessing?",
+
+    # DBMS & Data Handling
+    "What is normalization?",
+    "Explain ACID properties.",
+    "Difference between SQL and NoSQL?",
+    "What is indexing in databases?",
+    "What are joins in SQL? Explain types.",
+
+    # Statistics & Mathematics
+    "What is probability distribution?",
+    "Difference between mean, median, and mode?",
+    "Explain standard deviation.",
+    "What is correlation vs covariance?",
+    "What is Bayes Theorem?",
+
+    # Projects & Practical
+    "Explain your final year project.",
+    "What challenges did you face in your AI project?",
+    "How did you optimize your model performance?",
+    "How do you handle imbalanced datasets?",
+    "Which tools and frameworks have you used in AI projects?"
+]
+random.shuffle(other_questions)
+questions = [first_question] + random.sample(other_questions, 10)

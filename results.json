@@ -1577,5 +1577,308 @@
                 "stability": 54
             }
         ]
+    },
+    {
+        "timestamp": "2026-03-05 23:26:11",
+        "total_duration": 11,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 4,
+        "overall_avg_stability": 60,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 9,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Explain OOP concepts in Python.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Explain standard deviation.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Why do you want to join our company?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Describe a challenge you handled.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "Explain supervised vs unsupervised learning.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "Tell me about a time you worked in a team.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "What motivates you to work in AI & Data Science?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 44,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "What is correlation vs covariance?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 62
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 23:28:53",
+        "total_duration": 8,
+        "overall_avg_wpm": 17,
+        "overall_avg_engagement": 9,
+        "overall_avg_stability": 80,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 5,
+                "avg_wpm": 25,
+                "avg_engagement": 3,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What are vanishing and exploding gradients?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "Explain ACID properties.",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 33,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "Explain supervised vs unsupervised learning.",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What is indexing in databases?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What is cross-validation?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 32,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What challenges did you face in your AI project?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 31,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "Difference between SQL and NoSQL?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 80
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 23:38:41",
+        "total_duration": 89,
+        "overall_avg_wpm": 85,
+        "overall_avg_engagement": 60,
+        "overall_avg_stability": 58,
+        "total_fillers": 16,
+        "filler_freq": {
+            "so": 9,
+            "actually": 2,
+            "um": 2,
+            "basically": 1,
+            "well": 2
+        },
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 10,
+                "avg_wpm": 0,
+                "avg_engagement": 56,
+                "fillers": 0,
+                "stability": 69
+            },
+            {
+                "question": "Difference between mean, median, and mode?",
+                "duration": 34,
+                "avg_wpm": 69,
+                "avg_engagement": 47,
+                "fillers": 8,
+                "stability": 62
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 15,
+                "avg_wpm": 101,
+                "avg_engagement": 48,
+                "fillers": 5,
+                "stability": 58
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 6,
+                "avg_wpm": 98,
+                "avg_engagement": 44,
+                "fillers": 2,
+                "stability": 57
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 8,
+                "avg_wpm": 97,
+                "avg_engagement": 59,
+                "fillers": 1,
+                "stability": 56
+            },
+            {
+                "question": "Difference between Batch Normalization and Dropout?",
+                "duration": 2,
+                "avg_wpm": 99,
+                "avg_engagement": 42,
+                "fillers": 0,
+                "stability": 56
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 1,
+                "avg_wpm": 101,
+                "avg_engagement": 63,
+                "fillers": 0,
+                "stability": 56
+            },
+            {
+                "question": "Difference between SQL and NoSQL?",
+                "duration": 1,
+                "avg_wpm": 98,
+                "avg_engagement": 96,
+                "fillers": 0,
+                "stability": 57
+            },
+            {
+                "question": "Why should we hire you?",
+                "duration": 0,
+                "avg_wpm": 96,
+                "avg_engagement": 88,
+                "fillers": 0,
+                "stability": 57
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 4,
+                "avg_wpm": 94,
+                "avg_engagement": 68,
+                "fillers": 0,
+                "stability": 57
+            },
+            {
+                "question": "What is backpropagation?",
+                "duration": 2,
+                "avg_wpm": 91,
+                "avg_engagement": 56,
+                "fillers": 0,
+                "stability": 57
+            }
+        ]
     }
 ]
