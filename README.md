@@ -4,6 +4,33 @@ A real-time AI-powered mock interview platform that analyzes your **speech, faci
 
 ---
 
+## The Real-World Problem It Solves
+
+Every year, millions of job seekers — especially fresh graduates and early-career professionals — struggle with interviews not because they lack knowledge, but because they lack **interview self-awareness**. They don't realise they speak too fast, use too many filler words, avoid eye contact, or convey nervousness through their expressions. Traditional preparation methods (reading guides, mock interviews with friends, or reviewing past rejection feedback) are **subjective, infrequent, and non-measurable**.
+
+At the same time, hiring companies report that **communication skills, confidence, and body language** are among the top reasons candidates fail interviews — even technically strong ones.
+
+### What This Project Addresses
+
+| Problem | How This Project Solves It |
+|---|---|
+| No objective feedback on speaking pace | Measures real-time WPM using live speech transcription (Whisper) |
+| Unaware of filler word overuse | Counts and tracks "um", "uh", "like", "you know" per session |
+| Can't see how nervous they appear | Classifies facial emotion every frame using a trained CNN model |
+| No structured practice environment | Provides a curated set of real HR, behavioural, and technical questions |
+| No measurable progress over time | Stores all past sessions with scores and charts in session history |
+| Expensive coaching / no access to mentors | Runs entirely locally — zero cost, zero subscription, no internet required for inference |
+| Interview feedback comes too late (post-rejection) | Delivers real-time metrics *during* the session and a full report immediately after |
+
+### Who Benefits
+
+- **Students** preparing for campus placements and internship interviews
+- **Early-career professionals** switching domains or companies
+- **Self-learners** who want structured, data-driven interview practice without a coach
+- **Educators and institutions** who want a tool for interview readiness training
+
+---
+
 ## Features
 
 - 🎙️ **Live Voice Analysis** — Talking speed (WPM), voice stability, and filler word detection via Whisper + sounddevice
