@@ -1,1 +1,1377 @@
-{"avg_engagement": 0.4324605166912079, "wpm": 14.998214498274017, "fillers": 0, "confidence": 46.032381892204285, "session_duration": "00:22"}
+[
+    {
+        "total_duration": 69,
+        "overall_avg_wpm": 3,
+        "overall_avg_engagement": 46,
+        "overall_avg_stability": 63,
+        "total_fillers": 5,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 20,
+                "avg_wpm": 2,
+                "avg_engagement": 39,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "Difference between mean, median, and mode?",
+                "duration": 28,
+                "avg_wpm": 2,
+                "avg_engagement": 36,
+                "fillers": 5,
+                "stability": 63
+            },
+            {
+                "question": "How do you resolve conflicts in a project?",
+                "duration": 2,
+                "avg_wpm": 4,
+                "avg_engagement": 30,
+                "fillers": 0,
+                "stability": 63
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 4,
+                "avg_wpm": 4,
+                "avg_engagement": 45,
+                "fillers": 0,
+                "stability": 63
+            },
+            {
+                "question": "Which tools and frameworks have you used in AI projects?",
+                "duration": 6,
+                "avg_wpm": 3,
+                "avg_engagement": 44,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 0,
+                "avg_wpm": 3,
+                "avg_engagement": 37,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "What is an epoch, batch size, and iteration?",
+                "duration": 1,
+                "avg_wpm": 3,
+                "avg_engagement": 38,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 1,
+                "avg_wpm": 3,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "What is the difference between list and tuple in Python?",
+                "duration": 0,
+                "avg_wpm": 3,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "Explain time complexity and space complexity.",
+                "duration": 1,
+                "avg_wpm": 3,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 64
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 1,
+                "avg_wpm": 3,
+                "avg_engagement": 95,
+                "fillers": 0,
+                "stability": 64
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 21:51:54",
+        "total_duration": 44,
+        "overall_avg_wpm": 23,
+        "overall_avg_engagement": 47,
+        "overall_avg_stability": 60,
+        "total_fillers": 5,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 19,
+                "avg_wpm": 44,
+                "avg_engagement": 36,
+                "fillers": 3,
+                "stability": 60
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 8,
+                "avg_wpm": 28,
+                "avg_engagement": 44,
+                "fillers": 2,
+                "stability": 58
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 2,
+                "avg_wpm": 27,
+                "avg_engagement": 38,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 3,
+                "avg_wpm": 24,
+                "avg_engagement": 45,
+                "fillers": 0,
+                "stability": 59
+            },
+            {
+                "question": "Why do you want to join our company?",
+                "duration": 3,
+                "avg_wpm": 22,
+                "avg_engagement": 52,
+                "fillers": 0,
+                "stability": 60
+            },
+            {
+                "question": "What is overfitting and how can you prevent it?",
+                "duration": 1,
+                "avg_wpm": 21,
+                "avg_engagement": 54,
+                "fillers": 0,
+                "stability": 60
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 2,
+                "avg_wpm": 19,
+                "avg_engagement": 53,
+                "fillers": 0,
+                "stability": 61
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 1,
+                "avg_wpm": 19,
+                "avg_engagement": 54,
+                "fillers": 0,
+                "stability": 61
+            },
+            {
+                "question": "What is an epoch, batch size, and iteration?",
+                "duration": 0,
+                "avg_wpm": 19,
+                "avg_engagement": 50,
+                "fillers": 0,
+                "stability": 61
+            },
+            {
+                "question": "What are activation functions? Name a few.",
+                "duration": 0,
+                "avg_wpm": 18,
+                "avg_engagement": 48,
+                "fillers": 0,
+                "stability": 62
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 17,
+                "avg_engagement": 48,
+                "fillers": 0,
+                "stability": 62
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:00:18",
+        "total_duration": 10,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 70,
+        "overall_avg_stability": 75,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 6,
+                "avg_wpm": 0,
+                "avg_engagement": 32,
+                "fillers": 0,
+                "stability": 75
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 1,
+                "avg_wpm": 0,
+                "avg_engagement": 54,
+                "fillers": 0,
+                "stability": 75
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 75,
+                "fillers": 0,
+                "stability": 75
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 85,
+                "fillers": 0,
+                "stability": 75
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 88,
+                "fillers": 0,
+                "stability": 75
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 84,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is overfitting and how can you prevent it?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 79,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "Explain bias-variance tradeoff.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 74,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What are your strengths and weaknesses?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 70,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What challenges did you face in your AI project?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 66,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 63,
+                "fillers": 0,
+                "stability": 76
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:00:52",
+        "total_duration": 30,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 29,
+        "overall_avg_stability": 73,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 26,
+                "avg_wpm": 0,
+                "avg_engagement": 23,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "Difference between mean, median, and mode?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 48,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "Explain Gradient Descent and its types.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 48,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "What is backpropagation?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 46,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "What is the difference between list and tuple in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 46,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "Explain time complexity and space complexity.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 46,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "Which tools and frameworks have you used in AI projects?",
+                "duration": 1,
+                "avg_wpm": 0,
+                "avg_engagement": 43,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "What is CNN and where is it used?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 22,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "What challenges did you face in your AI project?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "Difference between classification and regression?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 73
+            },
+            {
+                "question": "What is an epoch, batch size, and iteration?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 73
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:09:09",
+        "total_duration": 27,
+        "overall_avg_wpm": 61,
+        "overall_avg_engagement": 6,
+        "overall_avg_stability": 52,
+        "total_fillers": 1,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 20,
+                "avg_wpm": 125,
+                "avg_engagement": 1,
+                "fillers": 1,
+                "stability": 51
+            },
+            {
+                "question": "Difference between classification and regression?",
+                "duration": 0,
+                "avg_wpm": 65,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 51
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 0,
+                "avg_wpm": 57,
+                "avg_engagement": 5,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "What is indexing in databases?",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 10,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "Why do you want to join our company?",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 36,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 7,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "What are joins in SQL? Explain types.",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 9,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "Explain standard deviation.",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "Explain ACID properties.",
+                "duration": 0,
+                "avg_wpm": 54,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 52
+            },
+            {
+                "question": "What is the difference between list and tuple in Python?",
+                "duration": 0,
+                "avg_wpm": 55,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 54
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:10:03",
+        "total_duration": 4,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 13,
+        "overall_avg_stability": 76,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 3,
+                "avg_wpm": 0,
+                "avg_engagement": 8,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What challenges did you face in your AI project?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 25,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is the role of convolutional layers?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 30,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 30,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What is cross-validation?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "Difference between mean, median, and mode?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 28,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "Explain bias-variance tradeoff.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 26,
+                "fillers": 0,
+                "stability": 76
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 76
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:12:32",
+        "total_duration": 3,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 0,
+        "overall_avg_stability": 61,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 1,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "What is the difference between list and tuple in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "Explain bias-variance tradeoff.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "What is backpropagation?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "Difference between SQL and NoSQL?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "Why do you want to join our company?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 68
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:16:17",
+        "total_duration": 6,
+        "overall_avg_wpm": 63,
+        "overall_avg_engagement": 0,
+        "overall_avg_stability": 46,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 3,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What motivates you to work in AI & Data Science?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 1,
+                "avg_wpm": 74,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 48
+            },
+            {
+                "question": "What are your strengths and weaknesses?",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "What is CNN and where is it used?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "How did you optimize your model performance?",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "Explain ACID properties.",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            },
+            {
+                "question": "What is multithreading vs multiprocessing?",
+                "duration": 0,
+                "avg_wpm": 67,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 46
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:21:53",
+        "total_duration": 3,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 0,
+        "overall_avg_stability": 0,
+        "total_fillers": 0,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 2,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What is normalization?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What is backpropagation?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What is the role of convolutional layers?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What are joins in SQL? Explain types.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "How do you resolve conflicts in a project?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "What is an epoch, batch size, and iteration?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "Which tools and frameworks have you used in AI projects?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "How do you handle pressure?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 0
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:25:11",
+        "total_duration": 189,
+        "overall_avg_wpm": 95,
+        "overall_avg_engagement": 22,
+        "overall_avg_stability": 53,
+        "total_fillers": 23,
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 105,
+                "avg_wpm": 102,
+                "avg_engagement": 17,
+                "fillers": 8,
+                "stability": 52
+            },
+            {
+                "question": "What is the role of convolutional layers?",
+                "duration": 15,
+                "avg_wpm": 95,
+                "avg_engagement": 27,
+                "fillers": 3,
+                "stability": 53
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 15,
+                "avg_wpm": 93,
+                "avg_engagement": 19,
+                "fillers": 2,
+                "stability": 53
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 16,
+                "avg_wpm": 91,
+                "avg_engagement": 18,
+                "fillers": 1,
+                "stability": 53
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 6,
+                "avg_wpm": 91,
+                "avg_engagement": 16,
+                "fillers": 1,
+                "stability": 53
+            },
+            {
+                "question": "Explain your final year project.",
+                "duration": 8,
+                "avg_wpm": 93,
+                "avg_engagement": 37,
+                "fillers": 1,
+                "stability": 53
+            },
+            {
+                "question": "Describe a challenge you handled.",
+                "duration": 9,
+                "avg_wpm": 97,
+                "avg_engagement": 50,
+                "fillers": 2,
+                "stability": 53
+            },
+            {
+                "question": "What is indexing in databases?",
+                "duration": 6,
+                "avg_wpm": 97,
+                "avg_engagement": 48,
+                "fillers": 1,
+                "stability": 53
+            },
+            {
+                "question": "What is transfer learning?",
+                "duration": 0,
+                "avg_wpm": 97,
+                "avg_engagement": 11,
+                "fillers": 0,
+                "stability": 53
+            },
+            {
+                "question": "Why should we hire you?",
+                "duration": 2,
+                "avg_wpm": 97,
+                "avg_engagement": 0,
+                "fillers": 2,
+                "stability": 54
+            },
+            {
+                "question": "What are your strengths and weaknesses?",
+                "duration": 3,
+                "avg_wpm": 98,
+                "avg_engagement": 3,
+                "fillers": 2,
+                "stability": 54
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:39:14",
+        "total_duration": 14,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 53,
+        "overall_avg_stability": 71,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 9,
+                "avg_wpm": 0,
+                "avg_engagement": 31,
+                "fillers": 0,
+                "stability": 69
+            },
+            {
+                "question": "What are your strengths and weaknesses?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 32,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 46,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "What is the role of convolutional layers?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 52,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "What is cross-validation?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 54,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "What are vanishing and exploding gradients?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 60,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "Which tools and frameworks have you used in AI projects?",
+                "duration": 1,
+                "avg_wpm": 0,
+                "avg_engagement": 87,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "What motivates you to work in AI & Data Science?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 94,
+                "fillers": 0,
+                "stability": 71
+            },
+            {
+                "question": "Tell me about a time you worked in a team.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 73,
+                "fillers": 0,
+                "stability": 74
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 55,
+                "fillers": 0,
+                "stability": 74
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:42:28",
+        "total_duration": 4,
+        "overall_avg_wpm": 47,
+        "overall_avg_engagement": 62,
+        "overall_avg_stability": 58,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 2,
+                "avg_wpm": 52,
+                "avg_engagement": 48,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "How do you resolve conflicts in a project?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 45,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Tell me about a failure you experienced.",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 46,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "What is overfitting and how can you prevent it?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 55,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 65,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Explain standard deviation.",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 74,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "What motivates you to work in AI & Data Science?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 83,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "What are vanishing and exploding gradients?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 90,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Where do you see yourself in 5 years?",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 92,
+                "fillers": 0,
+                "stability": 58
+            },
+            {
+                "question": "Explain OOP concepts in Python.",
+                "duration": 0,
+                "avg_wpm": 52,
+                "avg_engagement": 93,
+                "fillers": 0,
+                "stability": 58
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:46:59",
+        "total_duration": 6,
+        "overall_avg_wpm": 85,
+        "overall_avg_engagement": 79,
+        "overall_avg_stability": 78,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 4,
+                "avg_wpm": 104,
+                "avg_engagement": 55,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "Explain Gradient Descent and its types.",
+                "duration": 0,
+                "avg_wpm": 104,
+                "avg_engagement": 95,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "What is an epoch, batch size, and iteration?",
+                "duration": 0,
+                "avg_wpm": 104,
+                "avg_engagement": 95,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "What are precision, recall, and F1-score?",
+                "duration": 0,
+                "avg_wpm": 104,
+                "avg_engagement": 89,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "How do you handle imbalanced datasets?",
+                "duration": 0,
+                "avg_wpm": 104,
+                "avg_engagement": 90,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 104,
+                "avg_engagement": 87,
+                "fillers": 0,
+                "stability": 85
+            },
+            {
+                "question": "What is cross-validation?",
+                "duration": 0,
+                "avg_wpm": 89,
+                "avg_engagement": 86,
+                "fillers": 0,
+                "stability": 70
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 92,
+                "fillers": 0,
+                "stability": 70
+            },
+            {
+                "question": "What is probability distribution?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 70
+            },
+            {
+                "question": "What is Bayes Theorem?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 97,
+                "fillers": 0,
+                "stability": 70
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 0,
+                "avg_wpm": 74,
+                "avg_engagement": 85,
+                "fillers": 0,
+                "stability": 70
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-03-05 22:48:23",
+        "total_duration": 7,
+        "overall_avg_wpm": 0,
+        "overall_avg_engagement": 82,
+        "overall_avg_stability": 91,
+        "total_fillers": 0,
+        "filler_freq": {},
+        "history": [
+            {
+                "question": "Tell me about yourself.",
+                "duration": 3,
+                "avg_wpm": 0,
+                "avg_engagement": 61,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "Explain Gradient Descent and its types.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 93,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What are your strengths and weaknesses?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 93,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What is the difference between AI, ML, and Deep Learning?",
+                "duration": 1,
+                "avg_wpm": 0,
+                "avg_engagement": 94,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What is the difference between list and tuple in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 0,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What are joins in SQL? Explain types.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 96,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "Explain RNN and LSTM.",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 96,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What are decorators in Python?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 96,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What is CNN and where is it used?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 95,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "How do you resolve conflicts in a project?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 91,
+                "fillers": 0,
+                "stability": 91
+            },
+            {
+                "question": "What is the role of convolutional layers?",
+                "duration": 0,
+                "avg_wpm": 0,
+                "avg_engagement": 89,
+                "fillers": 0,
+                "stability": 91
+            }
+        ]
+    }
+]

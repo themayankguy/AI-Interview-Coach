@@ -1,178 +1,1360 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>AI Interview Coach</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Coach | Live</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #00ffcc;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
-            background-color: #0f172a;
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
             padding: 40px;
-        }
-
-        h1 {
-            color: #00ffcc;
-            margin-bottom: 30px;
-        }
-
-        .container {
             display: flex;
-            gap: 50px;
-            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        header h1 {
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* Start Screen */
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .start-card {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid var(--border);
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .start-card h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .start-card p {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Main app area (hidden until start) */
+        #app-container {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0.3;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        #app-container.active {
+            opacity: 1;
+            pointer-events: all;
         }
 
         .card {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 14px;
-            width: 420px;
-            box-shadow: 0 0 25px rgba(0,255,200,0.15);
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
         }
 
-        .question {
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: bold;
+        .question-area {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .metric {
-            margin: 14px 0;
-            font-size: 16px;
+        .question-label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #current-question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .metrics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .metric-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
         }
 
-        .value {
-            color: #00ffcc;
-            font-weight: bold;
+        .metric-name {
+            color: var(--text-dim);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .metric-name::after {
+            content: "";
+            flex-grow: 1;
+            border-bottom: 1px dotted var(--border);
+            margin: 0 15px;
+            height: 1px;
+            position: relative;
+            top: 5px;
+        }
+
+        .metric-value {
+            color: var(--accent);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.3);
+            background-color: #00e6b8;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .camera-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .camera-label {
+            color: var(--text-dim);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--border);
+            position: relative;
+            background-color: #000;
+            line-height: 0;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
         }
 
         video {
-            border-radius: 14px;
-            border: 2px solid #00ffcc;
+            width: 100%;
+            height: auto;
+            transform: scaleX(-1);
+            /* Mirror for natural feel */
         }
 
-        .emotion-box {
-            margin-top: 15px;
-            padding: 10px;
-            background: #0f766e;
-            border-radius: 8px;
+        .completed-msg {
+            color: var(--accent);
+            font-size: 1.8rem;
             text-align: center;
-            font-weight: bold;
+            width: 100%;
+        }
+
+        /* Report Card Overlay */
+        #report-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 2000;
+            display: none;
+            padding: 60px;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .report-section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .chart-container {
+            height: 350px;
+            position: relative;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .history-table th {
+            text-align: left;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .history-table th {
+            text-align: left;
+            padding: 12px 10px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .history-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .score-big {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .score-label {
+            color: var(--text-dim);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .score-percent {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: -10px;
+            margin-bottom: 5px;
+        }
+
+        .grading-scale {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .scale-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+            border: 1px solid var(--border);
+        }
+
+        .scale-item span {
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            margin-bottom: 2px;
+        }
+
+        .scale-item strong {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* Grade Sheet Details */
+        .grade-sheet {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 30px;
+        }
+
+        .grade-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .grade-item h4 {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .grade-item .status {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .status.excellent {
+            color: var(--accent);
+        }
+
+        .status.good {
+            color: #f59e0b;
+        }
+
+        .status.needs-work {
+            color: #ef4444;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .analytics-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 16px;
+            min-height: 350px;
+        }
+
+        .analytics-card .canvas-wrapper {
+            height: 250px;
+            width: 100%;
+            position: relative;
+        }
+
+        .analytics-card h4 {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        /* AI Feedback Section */
+        .feedback-section {
+            margin-top: 30px;
+            background: rgba(0, 255, 204, 0.05);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .placement-card {
+            background: linear-gradient(135deg, rgba(0, 255, 204, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--accent);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .placement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .placement-chance {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .placement-label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .placement-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            max-width: 800px;
+        }
+
+        .feedback-title {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-content {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .feedback-item {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feedback-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* History Archive */
+        #history-archive {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 2500;
+            display: none;
+            padding: 60px;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .history-list {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 30px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .history-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .history-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent);
+        }
+
+        .history-grade {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 12px;
+        }
+
+        .history-date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+            }
+
+            #report-overlay {
+                display: flex !important;
+                position: static;
+                background: white;
+                padding: 20px;
+            }
+
+            #app-container,
+            header,
+            #start-screen,
+            .btn-primary,
+            #report-actions,
+            .nav-links,
+            button {
+                display: none !important;
+            }
+
+            .score-percent {
+                color: black !important;
+            }
+
+            .grading-scale .scale-item {
+                border: 1px solid #ccc !important;
+                background: white !important;
+                color: black !important;
+            }
+
+            .scale-item strong {
+                color: black !important;
+            }
+
+            .report-section,
+            .grade-item {
+                border: 1px solid #ddd !important;
+                background: white !important;
+                color: black !important;
+            }
+
+            #performanceChart {
+                max-height: 300px;
+            }
+
+            .score-big {
+                color: black !important;
+            }
+
+            .metric-value,
+            .metric-name {
+                color: black !important;
+            }
+
+            .history-table th {
+                color: #666 !important;
+                border-bottom: 2px solid #333 !important;
+            }
+
+            .history-table td {
+                border-bottom: 1px solid #eee !important;
+                color: #333 !important;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            #app-container {
+                grid-template-columns: 1fr;
+            }
+
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .camera-panel {
+                order: -1;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>AI Interview Coach</h1>
-
-<div class="container">
-
-    <!-- Dashboard -->
-    <div class="card">
-
-        <div class="question" id="question">
-            Connecting to backend...
+    <div id="start-screen">
+        <div class="start-card">
+            <h2>Ready to Begin?</h2>
+            <p>Your AI Interview Coach is ready to analyze your performance. Click below to start the live session and
+                camera feed.</p>
+            <button class="btn-primary" id="begin-btn">Begin Interview</button>
+            <button class="nav-btn"
+                style="margin-top: 15px; width: 100%; border-color: var(--accent); color: var(--accent);"
+                onclick="showHistoryArchive()">View Past Interviews</button>
         </div>
-
-        <div class="metric">
-            <span>⏱ Time</span>
-            <span class="value" id="time">0</span>
-        </div>
-
-        <div class="metric">
-            <span>🎙 WPM</span>
-            <span class="value" id="wpm">0</span>
-        </div>
-
-        <div class="metric">
-            <span>📊 Stability</span>
-            <span class="value" id="stability">0%</span>
-        </div>
-
-        <div class="metric">
-            <span>🗣 Fillers</span>
-            <span class="value" id="fillers">0</span>
-        </div>
-
-        <div class="metric">
-            <span>🔥 Engagement</span>
-            <span class="value" id="engagement">0%</span>
-        </div>
-
-        <div class="emotion-box">
-            😊 Emotion: <span id="emotion">Neutral</span>
-        </div>
-        <button id="nextBtn" style="
-            margin-top:15px;
-            padding:8px 14px;
-            border:none;
-            border-radius:6px;
-            background:#00ffcc;
-            color:black;
-            font-weight:bold;
-            cursor:pointer;
-        ">
-Next Question →
-</button>
-
     </div>
 
-    <!-- Camera -->
-    <div>
-        <video id="camera" autoplay playsinline width="450"></video>
+    <div id="report-overlay">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div id="final-score" class="score-big">A</div>
+            <div id="final-percent" class="score-percent">85%</div>
+            <div class="score-label">Overall Performance Grade</div>
+
+            <div class="grading-scale">
+                <div class="scale-item"><span>85-100</span><strong>O</strong></div>
+                <div class="scale-item"><span>75-85</span><strong>A+</strong></div>
+                <div class="scale-item"><span>65-75</span><strong>A</strong></div>
+                <div class="scale-item"><span>50-65</span><strong>B</strong></div>
+                <div class="scale-item"><span>35-50</span><strong>C</strong></div>
+                <div class="scale-item"><span>0-35</span><strong>F</strong></div>
+            </div>
+        </div>
+
+        <!-- Placement Likelihood Card -->
+        <div class="placement-card" id="placement-assessment-card" style="display: none;">
+            <div class="placement-label">Placement Likelihood</div>
+            <div class="placement-chance" id="placement-probability">--%</div>
+            <div class="placement-desc" id="placement-justification">
+                Complete the evaluation to see your professional placement assessment.
+            </div>
+        </div>
+
+        <div class="grade-sheet" id="grade-sheet-details">
+            <!-- Filled by JS -->
+        </div>
+
+        <div class="analytics-grid">
+            <div class="analytics-card" style="grid-column: 1 / -1; min-height: 400px;">
+                <h4>Performance Radar</h4>
+                <div class="canvas-wrapper" style="height: 320px;">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Detailed Breakdown Card -->
+            <div class="analytics-card" style="grid-column: 1 / -1;">
+                <h4>Detailed Question Breakdown</h4>
+                <div style="overflow-x: auto; margin-top: 10px;">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Time</th>
+                                <th>WPM</th>
+                                <th>Engage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body">
+                            <!-- Filled by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <h4>Talking Speed Consistency</h4>
+                <div class="canvas-wrapper">
+                    <canvas id="paceChart"></canvas>
+                </div>
+            </div>
+            <div class="analytics-card">
+                <h4>Engagement Trend</h4>
+                <div class="canvas-wrapper">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </div>
+            <div class="analytics-card">
+                <h4>Score Contribution</h4>
+                <div class="canvas-wrapper">
+                    <canvas id="contributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-section" id="ai-feedback-container">
+            <div class="feedback-title">AI Performance Feedback</div>
+            <div class="feedback-content" id="ai-feedback-content">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 20px; margin-top: 50px;" id="report-actions">
+            <button class="btn-primary" style="max-width: 200px;" onclick="window.print()">Print Report</button>
+            <button class="btn-primary" id="report-main-btn"
+                style="max-width: 200px; background: transparent; border: 1px solid var(--accent); color: var(--accent);"
+                onclick="window.location.reload()">Start New</button>
+        </div>
     </div>
 
-</div>
+    <header>
+        <div class="header-text">
+            <h1>AI Interview Coach</h1>
+            <p>Live Mock Interview</p>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn" onclick="showHistoryArchive()">Interview History</button>
+        </div>
+    </header>
 
-<script>
-    const socket = new WebSocket("ws://127.0.0.1:8000/ws");
-    const video = document.getElementById("camera");
+    <div id="history-archive">
+        <div style="display: flex; justify-content: space-between; width: 100%; max-width: 900px; align-items: center;">
+            <h2 style="font-size: 2rem;">Past Sessions</h2>
+            <button class="nav-btn" onclick="document.getElementById('history-archive').style.display='none'">Close
+                ✕</button>
+        </div>
+        <div class="history-list" id="history-list-body">
+            <!-- Filled by JS -->
+        </div>
+    </div>
 
-    // Start Camera
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-            video.srcObject = stream;
+    <div id="app-container">
+        <!-- LEFT: Dashboard -->
+        <div class="card">
+            <div class="question-area">
+                <span class="question-label">Current Question</span>
+                <div id="current-question">Waiting to start...</div>
+            </div>
+
+            <div class="metrics-list">
+                <div class="metric-row">
+                    <span class="metric-name">Interview Time</span>
+                    <span class="metric-value" id="val-time">0s</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">Talking Speed (WPM)</span>
+                    <span class="metric-value" id="val-wpm">0</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">Voice Stability</span>
+                    <span class="metric-value" id="val-stability">0%</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">Filler Words</span>
+                    <span class="metric-value" id="val-fillers">0</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">Visual Engagement</span>
+                    <span class="metric-value" id="val-engagement">0%</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">Detected Emotion</span>
+                    <span class="metric-value" id="val-emotion">Neutral</span>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 35px;" id="next-btn">Next Question →</button>
+        </div>
+
+        <!-- RIGHT: Camera Panel -->
+        <div class="camera-panel">
+            <span class="camera-label">
+                <span class="status-dot"></span> Live Camera
+            </span>
+            <div class="video-container">
+                <video id="camera-stream" autoplay playsinline></video>
+            </div>
+            <p style="color: var(--text-dim); font-size: 0.85rem; text-align: center;">AI is analyzing your body
+                language and tone in real-time.</p>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('camera-stream');
+        const nextBtn = document.getElementById('next-btn');
+        const beginBtn = document.getElementById('begin-btn');
+        const questionDisplay = document.getElementById('current-question');
+        const startScreen = document.getElementById('start-screen');
+        const appContainer = document.getElementById('app-container');
+
+        let socket = null;
+        let isInterviewCompleted = false;
+
+        // Begin Interview Action
+        beginBtn.addEventListener('click', () => {
+            startScreen.style.opacity = '0';
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+                appContainer.classList.add('active');
+                initSession();
+            }, 500);
         });
 
-    socket.onmessage = function(event) {
-        const data = JSON.parse(event.data);
+        function initSession() {
+            startWebcam();
+            initWebSocket();
+            // High-frequency sync: 200ms for "immediate" feedback
+            setInterval(sendFrame, 200);
+        }
 
-        document.getElementById("question").innerText = data.question;
-        document.getElementById("time").innerText = data.time + "s";
-        document.getElementById("wpm").innerText = data.wpm;
-        document.getElementById("stability").innerText = data.stability + "%";
-        document.getElementById("fillers").innerText = data.fillers;
-        document.getElementById("engagement").innerText = data.engagement + "%";
-        document.getElementById("emotion").innerText = data.emotion;
-    };
+        // WebSocket setup with event handlers
+        function initWebSocket() {
+            socket = new WebSocket('ws://localhost:8000/ws');
 
-    document.getElementById("nextBtn").addEventListener("click", function() {
-    socket.send(JSON.stringify({
-        type: "next"
-        }));
-    });
-    // Send frame every 1 sec
-    setInterval(() => {
-        const canvas = document.createElement("canvas");
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(video, 0, 0);
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
 
-        const imageData = canvas.toDataURL("image/jpeg");
+                if (data.completed) {
+                    isInterviewCompleted = true;
+                    questionDisplay.innerHTML = '<span class="completed-msg">Interview Completed</span>';
+                    nextBtn.style.display = 'none';
+                    if (video.srcObject) {
+                        video.srcObject.getTracks().forEach(track => track.stop());
+                    }
+                    if (data.report) {
+                        showReportCard(data.report);
+                    }
+                    return;
+                }
 
-        socket.send(JSON.stringify({
-            type: "frame",
-            image: imageData
-        }));
+                // Update UI fields
+                document.getElementById('current-question').innerText = data.question || "Preparing next...";
+                document.getElementById('val-time').innerText = (data.time || 0) + 's';
+                document.getElementById('val-wpm').innerText = Math.round(data.wpm || 0);
+                document.getElementById('val-stability').innerText = (data.stability || 0) + '%';
+                document.getElementById('val-fillers').innerText = data.fillers || 0;
+                document.getElementById('val-engagement').innerText = (data.engagement || 0) + '%';
+                document.getElementById('val-emotion').innerText = data.emotion || "Neutral";
 
-    }, 1000);
-</script>
+                // Update button text on last question
+                if (data.is_last_question && !data.completed) {
+                    nextBtn.innerText = "Finish Interview";
+                    nextBtn.style.background = "#f59e0b";
+                }
+            };
 
+            socket.onopen = () => console.log("Connected to AI Backend");
+            socket.onerror = (err) => {
+                console.error("Socket error", err);
+                questionDisplay.innerText = "Backend Connection Error. Please start FastAPI.";
+            };
+        }
+
+        function showReportCard(report, isViewingArchive = false) {
+            const overlay = document.getElementById('report-overlay');
+            if (!overlay) return;
+
+            const scoreEl = document.getElementById('final-score');
+            const historyBody = document.getElementById('history-body');
+            const gradeSheetEl = document.getElementById('grade-sheet-details');
+            const mainActionBtn = document.getElementById('report-main-btn');
+
+            // Handle "Back" logic
+            if (mainActionBtn) {
+                if (isViewingArchive) {
+                    mainActionBtn.innerText = "Back to History";
+                    mainActionBtn.onclick = () => {
+                        overlay.style.display = 'none';
+                        showHistoryArchive();
+                    };
+                } else {
+                    mainActionBtn.innerText = "Start New";
+                    mainActionBtn.onclick = () => window.location.reload();
+                }
+            }
+
+            // Extract real metrics
+            const avgEngage = report.overall_avg_engagement || 0;
+            const avgWpm = report.overall_avg_wpm || 0;
+            const avgStability = report.overall_avg_stability || 0;
+            const fillers = report.total_fillers || 0;
+
+            // 1. Calculate Individual Scores (0-100)
+            const clarityScore = Math.max(0, 100 - (fillers * 5));
+
+            let rhythmScore = 0;
+            if (avgWpm >= 110 && avgWpm <= 180) rhythmScore = 100;
+            else if (avgWpm > 80 && avgWpm < 210) rhythmScore = 80;
+            else if (avgWpm > 50 && avgWpm < 240) rhythmScore = 60;
+            else if (avgWpm > 0) rhythmScore = 40;
+
+            const presenceScore = avgEngage;
+            const toneScore = avgStability;
+
+            // 2. Weighted Overall Grade
+            const weightedScore = (presenceScore * 0.3) + (rhythmScore * 0.2) + (toneScore * 0.25) + (clarityScore * 0.25);
+
+            let grade = 'F';
+            if (weightedScore > 85) grade = 'O';
+            else if (weightedScore > 75) grade = 'A+';
+            else if (weightedScore > 65) grade = 'A';
+            else if (weightedScore > 50) grade = 'B';
+            else if (weightedScore > 35) grade = 'C';
+
+            if (scoreEl) scoreEl.innerText = grade;
+            const finalPercentEl = document.getElementById('final-percent');
+            if (finalPercentEl) finalPercentEl.innerText = Math.round(weightedScore) + '%';
+
+            // 3. Status Mapping
+            const getStatus = (s) => {
+                if (s >= 75) return { text: 'Excellent', class: 'excellent' };
+                if (s >= 50) return { text: 'Good', class: 'good' };
+                return { text: 'Needs Work', class: 'needs-work' };
+            };
+
+            const clarity = getStatus(clarityScore);
+            const rhythm = getStatus(rhythmScore);
+            const presence = getStatus(presenceScore);
+            const tone = getStatus(toneScore);
+
+            if (gradeSheetEl) {
+                gradeSheetEl.innerHTML = `
+                    <div class="grade-item">
+                        <h4>Communication Clarity (${clarityScore}%)</h4>
+                        <div class="status ${clarity.class}">${clarity.text}</div>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); margin-top:5px;">Based on filler count: ${fillers}</p>
+                    </div>
+                    <div class="grade-item">
+                        <h4>Speech Rhythm (${rhythmScore}%)</h4>
+                        <div class="status ${rhythm.class}">${rhythm.text}</div>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); margin-top:5px;">Avg Pace: ${avgWpm} WPM</p>
+                    </div>
+                    <div class="grade-item">
+                        <h4>Visual Presence (${presenceScore}%)</h4>
+                        <div class="status ${presence.class}">${presence.text}</div>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); margin-top:5px;">Focus & Body Language</p>
+                    </div>
+                    <div class="grade-item">
+                        <h4>Voice Tone (${toneScore}%)</h4>
+                        <div class="status ${tone.class}">${tone.text}</div>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); margin-top:5px;">Volume & Tone Stability</p>
+                    </div>
+                `;
+            }
+
+            // 4. Detailed History Table
+            if (historyBody) {
+                historyBody.innerHTML = '';
+                if (report.history && Array.isArray(report.history)) {
+                    report.history.forEach((h, i) => {
+                        const row = `<tr>
+                            <td>Q${i + 1}</td>
+                            <td>${h.duration}s</td>
+                            <td>${h.avg_wpm}</td>
+                            <td>${h.avg_engagement}%</td>
+                        </tr>`;
+                        historyBody.insertAdjacentHTML('beforeend', row);
+                    });
+                }
+            }
+
+            overlay.style.display = 'flex';
+
+            // 5. Generate AI Feedback
+            generateAIFeedback(presenceScore, rhythmScore, toneScore, clarityScore, avgWpm, fillers);
+
+            // 6. Initialize All Analytics Charts (with small buffer for DOM visibility)
+            setTimeout(() => {
+                initAllCharts(report, presenceScore, rhythmScore, toneScore, clarityScore);
+                calculatePlacementLikelihood(grade, weightedScore);
+            }, 100);
+        }
+
+        function calculatePlacementLikelihood(grade, score) {
+            const chanceEl = document.getElementById('placement-probability');
+            const descEl = document.getElementById('placement-justification');
+            const card = document.getElementById('placement-assessment-card');
+            if (!chanceEl || !descEl || !card) return;
+
+            card.style.display = 'block';
+
+            let chance = 0;
+            let justification = "";
+
+            switch (grade) {
+                case 'O':
+                    chance = Math.floor(Math.random() * (98 - 90 + 1)) + 90;
+                    justification = "Your performance was exceptional. With such high level of engagement, clarity, and technical poise, you are in the top 5% of candidates. You show strong leadership potential and a deep grasp of the subject matter.";
+                    break;
+                case 'A+':
+                    chance = Math.floor(Math.random() * (89 - 80 + 1)) + 80;
+                    justification = "Highly impressive session. You demonstrated great confidence and communication skills. Most tier-1 firms would find you a very strong fit for their technical teams.";
+                    break;
+                case 'A':
+                    chance = Math.floor(Math.random() * (79 - 70 + 1)) + 70;
+                    justification = "Strong performance. You have a solid baseline for professional interviews. Refining your speech rhythm and minimizing filler words could push you into the elite placement bracket.";
+                    break;
+                case 'B':
+                    chance = Math.floor(Math.random() * (69 - 50 + 1)) + 50;
+                    justification = "Moderate likelihood. While you have the core skills, you need to work on your delivery and visual engagement to stand out in a competitive job market. Consistency is key.";
+                    break;
+                case 'C':
+                    chance = Math.floor(Math.random() * (49 - 30 + 1)) + 30;
+                    justification = "Needs significant preparation. Your current interview performance might struggle in high-stakes placements. Focus on building confidence and practicing your vocal stability.";
+                    break;
+                default:
+                    chance = Math.floor(Math.random() * (29 - 10 + 1)) + 10;
+                    justification = "Significant improvement required. We recommend regular mock sessions to build your foundational communication and engagement skills before attending real interviews.";
+            }
+
+            chanceEl.innerText = chance + "%";
+            descEl.innerText = justification;
+        }
+
+        function generateAIFeedback(presence, rhythm, tone, clarity, wpm, fillerCount) {
+            const container = document.getElementById('ai-feedback-content');
+            let feedback = [];
+
+            // Presence Feedback
+            if (presence < 60) {
+                feedback.push("Your visual engagement was low. Try to maintain better 'eye contact' with the camera and use more expressive facial movements to build connection.");
+            } else if (presence < 80) {
+                feedback.push("Good presence, but there's room for more energy. Smiling occasionally or using hand gestures can improve your impact.");
+            } else {
+                feedback.push("Excellent visual presence! You looked confident and engaged throughout the session.");
+            }
+
+            // Rhythm Feedback
+            if (wpm < 100) {
+                feedback.push(`You spoke quite slowly (${wpm} WPM). Increasing your pace slightly will make your delivery feel more dynamic and professional.`);
+            } else if (wpm > 190) {
+                feedback.push(`Your pace was very fast (${wpm} WPM). Try to slow down and use pauses to ensure the interviewer can follow your key points.`);
+            } else {
+                feedback.push("Your speech rhythm was within the ideal professional range. Great job maintaining a steady and clear pace.");
+            }
+
+            // Clarity Feedback
+            if (fillerCount > 10) {
+                feedback.push(`You used ${fillerCount} filler words. Focus on embracing silence when you need to think, rather than filling gaps with 'um' or 'uh'.`);
+            } else if (fillerCount > 0) {
+                feedback.push("Minor filler usage detected. Work on minimizing these further to achieve a perfectly polished delivery.");
+            } else {
+                feedback.push("Outstanding clarity! Your speech was exceptionally clean and free of distractions.");
+            }
+
+            // Tone Feedback
+            if (tone < 60) {
+                feedback.push("Your voice tone lacked stability. Focus on steady breathing and consistent volume to project more authority and confidence.");
+            } else {
+                feedback.push("Your vocal delivery was steady and confident, projecting a strong professional image.");
+            }
+
+            container.innerHTML = feedback.map(item => `<div class="feedback-item">${item}</div>`).join('');
+        }
+
+        window.activeCharts = {};
+
+        function initAllCharts(report, presence, rhythm, tone, clarity) {
+            const history = report.history || [];
+            const labels = history.map((_, i) => `Q${i + 1}`);
+
+            // 1. Radar Chart (Main Performance)
+            try { renderRadarChart(presence, rhythm, tone, clarity); } catch (e) { console.error("Radar Error", e); }
+
+            // 2. Pace Consistency (Line)
+            try { renderLineChart('paceChart', labels, history.map(h => h.avg_wpm), 'WPM', '#00ffcc'); } catch (e) { console.error("Pace Error", e); }
+
+            // 3. Engagement Trend (Area)
+            try { renderLineChart('engagementChart', labels, history.map(h => h.avg_engagement), 'Engagement %', '#3b82f6', true); } catch (e) { console.error("Engage Chart Error", e); }
+
+            // 4. Score Contribution (Doughnut)
+            try { renderDoughnutChart(presence, rhythm, tone, clarity); } catch (e) { console.error("Doughnut Error", e); }
+        }
+
+        function renderRadarChart(presence, rhythm, tone, clarity) {
+            const el = document.getElementById('performanceChart');
+            if (!el) return;
+            const ctx = el.getContext('2d');
+            if (window.activeCharts.radar) window.activeCharts.radar.destroy();
+            window.activeCharts.radar = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Presence', 'Rhythm', 'Tone', 'Clarity', 'Overall'],
+                    datasets: [{
+                        data: [presence, rhythm, tone, clarity, (presence + rhythm + tone + clarity) / 4],
+                        backgroundColor: 'rgba(0, 255, 204, 0.1)',
+                        borderColor: '#00ffcc',
+                        pointBackgroundColor: '#00ffcc'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.05)' } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function renderLineChart(id, labels, data, label, color, fill = false) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const ctx = el.getContext('2d');
+            if (window.activeCharts[id]) window.activeCharts[id].destroy();
+            window.activeCharts[id] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderColor: color,
+                        backgroundColor: fill ? `${color}22` : 'transparent',
+                        fill: fill,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function renderDoughnutChart(presence, rhythm, tone, clarity) {
+            const el = document.getElementById('contributionChart');
+            if (!el) return;
+            const ctx = el.getContext('2d');
+            if (window.activeCharts.doughnut) window.activeCharts.doughnut.destroy();
+            window.activeCharts.doughnut = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Presence', 'Rhythm', 'Tone', 'Clarity'],
+                    datasets: [{
+                        data: [presence * 0.3, rhythm * 0.2, tone * 0.25, clarity * 0.25],
+                        backgroundColor: ['#00ffcc', '#3b82f6', '#f59e0b', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 10 } } } }
+                }
+            });
+        }
+
+
+        async function showHistoryArchive() {
+            const historyOverlay = document.getElementById('history-archive');
+            const historyBody = document.getElementById('history-list-body');
+            historyOverlay.style.display = 'flex';
+            historyBody.innerHTML = '<div style="color: var(--text-dim)">Loading history...</div>';
+
+            try {
+                const response = await fetch('http://localhost:8000/history');
+                const history = await response.json();
+
+                historyBody.innerHTML = '';
+                if (history.length === 0) {
+                    historyBody.innerHTML = '<div style="color: var(--text-dim); text-align: center; margin-top: 40px;">No interview sessions found. Complete your first interview to see history!</div>';
+                    return;
+                }
+
+                history.reverse().forEach((session, idx) => {
+                    try {
+                        const overall_engage = session.overall_avg_engagement || 0;
+                        const overall_stability = session.overall_avg_stability || 0;
+                        const total_fillers = session.total_fillers || 0;
+                        const wpm = session.overall_avg_wpm || 0;
+
+                        // Correct Score Calculation for History Archive
+                        let rS = 0;
+                        if (wpm >= 110 && wpm <= 180) rS = 100;
+                        else if (wpm > 80 && wpm < 210) rS = 80;
+                        else if (wpm > 50 && wpm < 240) rS = 60;
+                        else if (wpm > 0) rS = 40;
+
+                        const cS = Math.max(0, 100 - (total_fillers * 5));
+                        const wS = (overall_engage * 0.3) + (rS * 0.2) + (overall_stability * 0.25) + (cS * 0.25);
+
+                        let grade = 'C';
+                        if (wS > 85) grade = 'O';
+                        else if (wS > 75) grade = 'A+';
+                        else if (wS > 65) grade = 'A';
+                        else if (wS > 50) grade = 'B';
+
+                        const item = document.createElement('div');
+                        item.className = 'history-item';
+                        item.innerHTML = `
+                            <div class="history-grade">${grade}</div>
+                            <div>
+                                <div style="font-weight: 700;">Interview Session</div>
+                                <div class="history-date">${session.timestamp || 'Previous Session'}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 0.8rem; color: var(--text-dim);">ENGAGEMENT</div>
+                                <div style="color: var(--accent); font-weight: 700;">${overall_engage}%</div>
+                            </div>
+                            <div style="text-align: right; padding-left: 20px;">
+                                <div style="font-size: 0.8rem; color: var(--text-dim);">DURATION</div>
+                                <div style="font-weight: 700;">${Math.floor(session.total_duration / 60)}m ${session.total_duration % 60}s</div>
+                            </div>
+                        `;
+                        item.onclick = () => {
+                            historyOverlay.style.display = 'none';
+                            showReportCard(session, true);
+                        };
+                        historyBody.appendChild(item);
+                    } catch (e) {
+                        console.error("Skipping malformed session entry:", e);
+                    }
+                });
+            } catch (err) {
+                console.error("History fetch error:", err);
+                historyBody.innerHTML = '<div style="color: #ef4444">Error loading history archive.</div>';
+            }
+        }
+
+        // Start Webcam
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: 640, height: 480 },
+                    audio: false
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing webcam:", err);
+                questionDisplay.innerText = "Error: Please allow camera access.";
+            }
+        }
+
+        // Send Frame to Backend
+        function sendFrame() {
+            if (!socket || socket.readyState !== WebSocket.OPEN || isInterviewCompleted) return;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+
+            const base64Image = canvas.toDataURL('image/jpeg', 0.5);
+            socket.send(JSON.stringify({
+                type: 'frame',
+                image: base64Image
+            }));
+        }
+
+        // Next Question functionality
+        nextBtn.addEventListener('click', () => {
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({ type: 'next' }));
+            }
+        });
+    </script>
 </body>
+
 </html>

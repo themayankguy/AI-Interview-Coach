@@ -6,7 +6,13 @@ import random
 from tensorflow.keras.models import load_model
 from backend.test_voice import start_voice_analysis, voice_metrics
 
-
+history = []
+history.append({
+    "time": current_time,
+    "emotion": emotion,
+    "engagement": engagement,
+    "wpm": wpm
+})
 # -----------------------------
 # LOAD MODELS
 # -----------------------------
@@ -252,18 +258,26 @@ import json
 import os
 
 results_data = {
-    "avg_engagement": float(avg_session_engagement),
-    "wpm": float(wpm),
-    "fillers": int(fillers),
-    "confidence": float(overall_confidence),
-    "session_duration": f"{int(elapsed // 60):02d}:{int(elapsed % 60):02d}"
+    "summary": {
+        "avg_engagement": float(avg_session_engagement),
+        "wpm": float(wpm),
+        "fillers": int(fillers),
+        "confidence": float(overall_confidence),
+        "session_duration": f"{int(elapsed // 60):02d}:{int(elapsed % 60):02d}"
+    },
+
+    "history": history
 }
 
-# Save to the root of the project where dashboard expects it (../results.json from frontend/dashboard)
-results_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results.json")
+# Save to project root
+results_path = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),
+    "results.json"
+)
+
 with open(results_path, "w") as f:
-    json.dump(results_data, f)
-    
+    json.dump(results_data, f, indent=4)
+
 print(f"Results saved to {results_path}")
 
 #cd /Users/mayanksmac/Desktop/DL

@@ -13,12 +13,14 @@ SAMPLE_RATE = 44100 #16000 nromally, but 44100 is more common for live audio
 session_start_time = time.time()
 total_words = 0
 total_fillers = 0
+filler_freq = {}
 all_rms_values = []
 
 voice_metrics = {
     "wpm": 0,
     "volume_stability": 0,
-    "filler_count": 0
+    "filler_count": 0,
+    "filler_freq": {}
 }
 
 def audio_callback(indata, frames, time_info, status):
@@ -27,7 +29,7 @@ def audio_callback(indata, frames, time_info, status):
 total_speaking_time = 0  # ADD GLOBAL AT TOP
 
 def analyze_audio_chunk(audio_chunk):
-    global voice_metrics, total_words, total_fillers
+    global voice_metrics, total_words, total_fillers, filler_freq
     global all_rms_values, total_speaking_time
 
     y = audio_chunk.flatten().astype(np.float32)
@@ -70,8 +72,12 @@ def analyze_audio_chunk(audio_chunk):
     total_words += words
 
     fillers = ["um", "uh", "like", "you know", "so", "actually","basically", "literally", "right", "okay","i mean", "kind of", "sort of", "well"]
-    filler_count = sum(text.lower().count(f) for f in fillers)
-    total_fillers += filler_count
+    current_text_lower = text.lower()
+    for f in fillers:
+        count = current_text_lower.count(f)
+        if count > 0:
+            total_fillers += count
+            filler_freq[f] = filler_freq.get(f, 0) + count
 
     # WPM based on speaking time
     if total_speaking_time > 0:
@@ -88,7 +94,20 @@ def analyze_audio_chunk(audio_chunk):
     voice_metrics["wpm"] = wpm
     voice_metrics["volume_stability"] = stability
     voice_metrics["filler_count"] = total_fillers
+    voice_metrics["filler_freq"] = dict(filler_freq)
 
+
+def reset_voice_metrics():
+    global voice_metrics, total_words, total_fillers, filler_freq, all_rms_values, total_speaking_time
+    voice_metrics["wpm"] = 0
+    voice_metrics["volume_stability"] = 0
+    voice_metrics["filler_count"] = 0
+    voice_metrics["filler_freq"] = {}
+    total_words = 0
+    total_fillers = 0
+    filler_freq = {}
+    all_rms_values = []
+    total_speaking_time = 0
 
 def voice_thread():
     buffer = []
