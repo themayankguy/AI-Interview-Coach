@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Interview Coach</title>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #00ffcc;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 14px;
+            width: 420px;
+            box-shadow: 0 0 25px rgba(0,255,200,0.15);
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .metric {
+            margin: 14px 0;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .value {
+            color: #00ffcc;
+            font-weight: bold;
+        }
+
+        video {
+            border-radius: 14px;
+            border: 2px solid #00ffcc;
+        }
+
+        .emotion-box {
+            margin-top: 15px;
+            padding: 10px;
+            background: #0f766e;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AI Interview Coach</h1>
+
+<div class="container">
+
+    <!-- Dashboard -->
+    <div class="card">
+
+        <div class="question" id="question">
+            Connecting to backend...
+        </div>
+
+        <div class="metric">
+            <span>⏱ Time</span>
+            <span class="value" id="time">0</span>
+        </div>
+
+        <div class="metric">
+            <span>🎙 WPM</span>
+            <span class="value" id="wpm">0</span>
+        </div>
+
+        <div class="metric">
+            <span>📊 Stability</span>
+            <span class="value" id="stability">0%</span>
+        </div>
+
+        <div class="metric">
+            <span>🗣 Fillers</span>
+            <span class="value" id="fillers">0</span>
+        </div>
+
+        <div class="metric">
+            <span>🔥 Engagement</span>
+            <span class="value" id="engagement">0%</span>
+        </div>
+
+        <div class="emotion-box">
+            😊 Emotion: <span id="emotion">Neutral</span>
+        </div>
+        <button id="nextBtn" style="
+            margin-top:15px;
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            background:#00ffcc;
+            color:black;
+            font-weight:bold;
+            cursor:pointer;
+        ">
+Next Question →
+</button>
+
+    </div>
+
+    <!-- Camera -->
+    <div>
+        <video id="camera" autoplay playsinline width="450"></video>
+    </div>
+
+</div>
+
+<script>
+    const socket = new WebSocket("ws://127.0.0.1:8000/ws");
+    const video = document.getElementById("camera");
+
+    // Start Camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        });
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+
+        document.getElementById("question").innerText = data.question;
+        document.getElementById("time").innerText = data.time + "s";
+        document.getElementById("wpm").innerText = data.wpm;
+        document.getElementById("stability").innerText = data.stability + "%";
+        document.getElementById("fillers").innerText = data.fillers;
+        document.getElementById("engagement").innerText = data.engagement + "%";
+        document.getElementById("emotion").innerText = data.emotion;
+    };
+
+    document.getElementById("nextBtn").addEventListener("click", function() {
+    socket.send(JSON.stringify({
+        type: "next"
+        }));
+    });
+    // Send frame every 1 sec
+    setInterval(() => {
+        const canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(video, 0, 0);
+
+        const imageData = canvas.toDataURL("image/jpeg");
+
+        socket.send(JSON.stringify({
+            type: "frame",
+            image: imageData
+        }));
+
+    }, 1000);
+</script>
+
+</body>
+</html>

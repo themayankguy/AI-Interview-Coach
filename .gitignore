@@ -1,0 +1,13 @@
+venv/
+venv310/
+__pycache__/
+models/
+Datasets/
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+backups/
+.cache

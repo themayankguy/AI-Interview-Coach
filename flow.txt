@@ -1,0 +1,20 @@
+ai-interview-coach/
+│
+├── data/
+│   └── fer2013.csv
+│
+├── models/
+│
+├── backend/
+│   ├── train.py
+│   ├── preprocess.py
+│   ├── emotion_model.py
+│   └── realtime_emotion.py
+│
+├── frontend/
+│
+└── requirements.txt
+
+DATASETS:
+FER-2013 (kaggle)
+Grayscale Face Images (Kaggle)
