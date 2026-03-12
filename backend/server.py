@@ -13,7 +13,7 @@ import threading
 
 # Import voice system
 
-from test_voice import start_voice_analysis, voice_metrics, reset_voice_metrics
+from .test_voice import start_voice_analysis, voice_metrics, reset_voice_metrics
 
 app = FastAPI()
 

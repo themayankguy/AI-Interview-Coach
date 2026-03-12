@@ -135,11 +135,11 @@ You need **two terminals** running simultaneously.
 
 ### Terminal 1 — Start the Backend
 
+From the project root:
+
 ```bash
 source venv310/bin/activate
-export PYTHONPATH=$PYTHONPATH:.
-cd backend
-uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+python3 -m uvicorn backend.server:app --port 8000 --reload
 ```
 
 The backend WebSocket server will be available at:
@@ -147,17 +147,18 @@ The backend WebSocket server will be available at:
 ws://localhost:8000/ws
 ```
 
-### Terminal 2 — Serve the Frontend
+### Terminal 2 — Start the Frontend
 
 From the project root:
 
 ```bash
-npx -y serve .
+source venv310/bin/activate
+python3 -m http.server 8001
 ```
 
 Then open your browser at:
 ```
-http://localhost:3000/frontend/index.html
+http://localhost:8001/frontend/index.html
 ```
 
 ---
